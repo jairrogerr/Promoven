@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
+  const location = useLocation();
+  const hiddenPages = ['/login', '/signup', '/demo-dashboard'].includes(location.pathname);
+
+  if (hiddenPages) return null;
+
   return (
     <footer className="bg-zinc-950 border-t border-white/5 pt-16 pb-8">
       <div className="container mx-auto px-6">
