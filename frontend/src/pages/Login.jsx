@@ -5,28 +5,42 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { toast } from "sonner";
 import { Loader2 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { signIn } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
+
+    if (!email || !password) {
+      setError('Email e senha são obrigatórios');
+      return;
+    }
+
     setLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+    const { error: signInError } = await signIn(email, password);
+
+    if (signInError) {
+      setError(signInError);
+      toast.error(signInError);
       setLoading(false);
+    } else {
       toast.success("Login realizado com sucesso!", {
         description: "Redirecionando para o dashboard..."
       });
       navigate('/demo-dashboard');
-    }, 1500);
+    }
   };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-6 relative overflow-hidden">
-      {/* Background blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-900/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px]" />
@@ -44,17 +58,38 @@ const Login = () => {
           <p className="text-zinc-400">Acesse sua conta para gerenciar seu negócio</p>
         </div>
 
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg mb-6 text-sm">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleLogin} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">E-mail</Label>
-            <Input id="email" type="email" placeholder="seu@email.com" className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500" required />
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="seu@email.com"
+              className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500"
+              required
+            />
           </div>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Senha</Label>
-              <a href="#" className="text-xs text-indigo-400 hover:text-indigo-300">Esqueceu a senha?</a>
             </div>
-            <Input id="password" type="password" placeholder="••••••••" className="bg-zinc-800/50 border-zinc-700 text-white" required />
+            <Input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="bg-zinc-800/50 border-zinc-700 text-white"
+              required
+            />
           </div>
 
           <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white" disabled={loading}>
@@ -62,24 +97,6 @@ const Login = () => {
             {loading ? "Entrando..." : "Entrar na Plataforma"}
           </Button>
         </form>
-
-        <div className="relative my-8">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t border-zinc-700" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-zinc-900 px-2 text-zinc-500">Ou continue com</span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <Button variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white">
-            Google
-          </Button>
-          <Button variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white">
-            Apple
-          </Button>
-        </div>
 
         <p className="mt-8 text-center text-sm text-zinc-500">
           Não tem uma conta?{" "}
