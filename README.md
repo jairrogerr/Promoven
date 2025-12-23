@@ -1,97 +1,70 @@
-# Promoven One 🚀
+# Getting Started with Create React App
 
-Plataforma de assessoria integrada, gestão financeira e contabilidade simplificada para MEIs e microempreendedores.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Este repositório contém o MVP (Produto Mínimo Viável) da aplicação, focado na experiência do usuário, design de alta fidelidade e fluxos de navegação.
+## Available Scripts
 
-## 🛠 Tecnologias Utilizadas
+In the project directory, you can run:
 
-- **Frontend:** React.js, Tailwind CSS
-- **UI Components:** Shadcn UI, Lucide React (Ícones)
-- **Estilização:** Glassmorphism, Dark Mode nativo, Animações CSS
-- **Backend (Estrutura):** FastAPI (Python), MongoDB
-- **Gerenciamento de Estado:** React Hooks
+### `npm start`
 
-## 📱 Funcionalidades do MVP
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Área Pública (Institucional)
-- **Landing Page (Home):** Hero section com mockup 3D interativo via CSS, seções de benefícios e prova social.
-- **Funcionalidades:** Detalhamento dos recursos da plataforma.
-- **Preços:** Tabela comparativa de planos.
-- **Sobre:** Missão, visão e valores da empresa.
-- **Autenticação:** Páginas de Login e Cadastro com validações visuais.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Área Logada (Demo Dashboard)
-O painel administrativo (`/demo-dashboard`) inclui simulações funcionais de:
-1.  **Visão Geral:** Resumo financeiro, gráficos de performance e atalhos.
-2.  **Notas Fiscais:** Listagem completa com status (Emitida, Paga, Cancelada).
-3.  **Financeiro:** Controle de fluxo de caixa anual e entradas/saídas.
-4.  **Educação:** Hub de conteúdos (vídeos, artigos) para o empreendedor.
-5.  **Configurações:** Gerenciamento de perfil e dados da empresa.
-6.  **Chat IA:** Assistente virtual simulado para dúvidas rápidas.
+### `npm test`
 
-## 🚀 Como Rodar o Projeto
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Pré-requisitos
-- Node.js (v18+)
-- Python (v3.10+)
-- MongoDB (Local ou Atlas)
+### `npm run build`
 
-### 1. Configuração do Frontend
-```bash
-cd frontend
-# Instalar dependências
-yarn install
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# Rodar servidor de desenvolvimento
-yarn start
-# O projeto abrirá em http://localhost:3000
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### 2. Configuração do Backend
-*Nota: O backend neste MVP é estrutural. A lógica de negócios está detalhada em `contracts.md`.*
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```bash
-cd backend
-# Instalar dependências
-pip install -r requirements.txt
+### `npm run eject`
 
-# Rodar servidor
-uvicorn server:app --reload
-# A API ficará disponível em http://localhost:8000
-```
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## 📂 Estrutura de Pastas Relevante
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```
-/app
-├── contracts.md            # Documentação técnica da API e modelagem de dados futura
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── dashboard/  # Componentes internos do painel (Overview, Finance, etc)
-│   │   │   ├── layout/     # Navbar, Footer
-│   │   │   ├── sections/   # Seções da Landing Page
-│   │   │   └── ui/         # Componentes base (Botões, Inputs, Cards)
-│   │   ├── pages/          # Rotas principais (Home, Login, DashboardDemo)
-│   │   └── data/           # Dados mockados para o frontend
-└── backend/                # Estrutura inicial do servidor FastAPI
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## 🎨 Diretrizes de Design
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-O projeto segue uma estética "Dark Mode Premium":
-- **Cores Principais:** Indigo (`#4f46e5`) e Roxo (`#9333ea`) sobre fundo Zinco Escuro (`#09090b`).
-- **Efeitos:** Uso extensivo de `backdrop-blur` (vidro) e gradientes sutis.
-- **Tipografia:** Sans-serif moderna, otimizada para leitura.
+## Learn More
 
-## 🔜 Próximos Passos (Roadmap)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Conforme detalhado no arquivo `contracts.md`:
-1.  Implementar autenticação JWT real.
-2.  Conectar o dashboard aos endpoints da API `finance`.
-3.  Integrar API da OpenAI para o Chat Assistant.
-4.  Configurar integração com gateway de emissão de NFe.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
----
-Desenvolvido com 💜 para o ecossistema empreendedor.
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
